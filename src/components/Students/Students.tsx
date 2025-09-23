@@ -9,7 +9,7 @@ const Students = (): React.ReactElement => {
   const { students } = useStudents();
 
   return (
-    <div className={styles.Students}>
+    <div className={styles.Student}>
       {students.map((student: StudentInterface) => (
        <Student student={student} onDelete={()=>{}} />
       ))}
