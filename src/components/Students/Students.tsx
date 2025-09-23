@@ -3,6 +3,7 @@
 import useStudents from '@/hooks/useStudents';
 import type StudentInterface from '@/types/StudentInterface';
 import styles from './Students.module.scss';
+import Student from './Student/Student';
 
 const Students = (): React.ReactElement => {
   const { students } = useStudents();
@@ -10,11 +11,7 @@ const Students = (): React.ReactElement => {
   return (
     <div className={styles.Students}>
       {students.map((student: StudentInterface) => (
-        <h2 key={student.id}>
-          {student.first_name}
-          {student.last_name}
-          {student.middle_name}
-        </h2>
+       <Student student={student} onDelete={()=>{}} />
       ))}
     </div>
   );
