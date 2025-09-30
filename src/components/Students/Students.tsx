@@ -6,12 +6,22 @@ import styles from './Students.module.scss';
 import Student from './Student/Student';
 
 const Students = (): React.ReactElement => {
-  const { students } = useStudents();
+  const { students, deleteStudentMutate } = useStudents();
+
+  const onDeleteHandler = (studentId: number): void => {
+    if (confirm('Удалить студента?')) {
+      deleteStudentMutate(studentId);
+    }
+  };
 
   return (
-    <div className={styles.Student}>
+    <div className={styles.Students}>
       {students.map((student: StudentInterface) => (
-       <Student student={student} onDelete={()=>{}} />
+        <Student
+          key={student.id}
+          student={student}
+          onDelete={onDeleteHandler}
+        />
       ))}
     </div>
   );
